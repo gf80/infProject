@@ -1,0 +1,27 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        size_hint_y: None
+        pos_hint: {"center_x": 0.5, "center_y":0.5}
+
+        Button:
+            text: "Создать новую группу предметов"
+            size_hint_y: None
+            height: "48dp"
+            font_size: "16sp"
+            on_release: root.manager.current = "create_group_screen"
+        Button:
+            text: "Перейти в сохраненные группы"
+            size_hint_y: None
+            height: "48dp"
+            font_size: "16sp"
+            on_release: root.manager.current = "saved_group_screen"
+
+<SavedGroupScreen>:
+    Label:
+        text: "Hello"
+
+<CreateGroupScreen>:
+    Label:
+        text: "World"
