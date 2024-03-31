@@ -1,27 +1,95 @@
-<MainScreen>:
-    BoxLayout:
-        orientation: "vertical"
-        padding: 30
-        size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y":0.5}
+#:import MDActionBottomAppBarButton kivymd.uix.appbar.MDActionBottomAppBarButton
+<TransparentButton>:
+    background_color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: 0, 1, 1, 1
+        Line:
+            points: self.x, self.y, self.x + self.width, self.y
 
-        Button:
-            text: "Создать новую группу предметов"
-            size_hint_y: None
-            height: "48dp"
-            font_size: "16sp"
-            on_release: root.manager.current = "create_group_screen"
-        Button:
-            text: "Перейти в сохраненные группы"
-            size_hint_y: None
-            height: "48dp"
-            font_size: "16sp"
-            on_release: root.manager.current = "saved_group_screen"
+<MainScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            MDList:
+                MDButton:
+                    style: "outlined"
+                    size_hint_y: None
+                    theme_width: "Custom"
+                    height: "70dp"
+                    size_hint_x: .5
+                    radius: 0
+                    MDButtonText:
+                        text: "Outlined"
+                        font_style: "Title"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                MDButton:
+                    style: "outlined"
+                    size_hint_y: None
+                    theme_width: "Custom"
+                    height: "70dp"
+                    size_hint_x: .5
+                    radius: 0
+                    MDButtonText:
+                        text: "Outlined"
+                        font_style: "Title"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                MDButton:
+                    style: "outlined"
+                    size_hint_y: None
+                    theme_width: "Custom"
+                    height: "70dp"
+                    size_hint_x: .5
+                    radius: 0
+                    MDButtonText:
+                        text: "Outlined"
+                        font_style: "Title"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                MDButton:
+                    style: "outlined"
+                    size_hint_y: None
+                    theme_width: "Custom"
+                    height: "70dp"
+                    size_hint_x: .5
+                    radius: 0
+                    MDButtonText:
+                        text: "Outlined"
+                        font_style: "Title"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBottomAppBar:
+            MDFabBottomAppBarButton:
+                icon: "plus"
+
+
 
 <SavedGroupScreen>:
     Label:
         text: "Hello"
 
 <CreateGroupScreen>:
-    Label:
-        text: "World"
+    BoxLayout:
+        orientation: "vertical"
+        padding: "5dp"
+        size_hint_y: None
+        pos_hint: {"center_x": 0.5, "center_y":0.5}
+        TextInput:
+            id: name_group
+            size_hint_y: None
+            height: "48dp"
+            multiline: False
+            hint_text: "Загаловок"
+            font_size: "16sp"
+            on_text: root.disable()
+        Button:
+            id: create
+            text: "Создать"
+            size_hint_y: None
+            height: "48dp"
+            font_size: "16sp"
+            on_release: root.create()
+        Label:
+            id: warning
+            size_hint_y: None
